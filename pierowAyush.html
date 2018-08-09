@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>dc.js - Bar Chart Example</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+   
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crossfilter/1.3.12/crossfilter.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dc/3.0.4/dc.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.18/css/jquery.dataTables.css">
+    <link rel="stylesheet" href="./css/formatting.css">
+</head>
+<body>
+
+<div class="container">
+<div id="pieChart"> </div>
+<div id="rowChart"> </div>
+
+
+<script type="text/javascript">
+
+var data = [{
+    "city": "New York",
+        "neighborhood": "N/A",
+        "hits": 200
+}, {
+    "city": "New York",
+        "neighborhood": "Brooklyn",
+        "hits": 225
+}, {
+    "city": "New York",
+        "neighborhood": "Queens",
+        "hits": 1
+}, {
+    "city": "San Francisco",
+        "neighborhood": "Chinatown",
+        "hits": 268
+}, {
+    "city": "San Francisco",
+        "neighborhood": "Downtown",
+        "hits": 22
+}, {
+    "city": "Seattle",
+        "neighborhood": "N/A",
+        "hits": 2
+}, {
+    "city": "Seattle",
+        "neighborhood": "Freemont",
+        "hits": 25
+}];
+var pieChart = dc.pieChart("#pieChart"),
+    
+
+
+
+
+
+
+rowChart = dc.rowChart("#rowChart");
+
+var ndx = crossfilter(data),
+    cityDimension = ndx.dimension(function (d) {
+        return d.city;
+    }),
+    cityGroup = cityDimension.group().reduceSum(function (d) {
+        return d.hits;
+    }),
+    neighborhoodDimension = ndx.dimension(function (d) {
+        return d.neighborhood;
+    }),
+    neighborhoodGroup = neighborhoodDimension.group().reduceSum(function (d) {
+        return d.hits;
+    });
+
+pieChart.width(200)
+    .height(200)
+    .slicesCap(4)
+    .dimension(cityDimension)
+    .group(cityGroup);
+pieChart.filter = function() {};
+
+    var colorScale = d3.scaleOrdinal()
+            .domain(["San Francisco", "New York", "Seattle"])
+            .range(["#D82C8C", "#17A7CF", "#E58304"]);
+
+    pieChart.colors(colorScale);
+
+rowChart.width(500)
+    .height(500)
+    .dimension(neighborhoodDimension)
+    .group(neighborhoodGroup);
+
+dc.renderAll();
+</script>
+
+</div>
+</body>
+</html>
