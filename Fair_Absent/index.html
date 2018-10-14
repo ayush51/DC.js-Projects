@@ -1,0 +1,141 @@
+<html>
+
+<head>
+
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/dc/1.7.5/dc.css" /> -->
+    <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.js" charset="utf-8"></script> -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crossfilter/1.3.12/crossfilter.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.13.0/d3.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dc/3.0.4/dc.js"></script>
+    
+
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.18/css/jquery.dataTables.css">
+    <link rel="stylesheet" href="./css/formatting.css">
+    <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/dc/2.0.2/dc.js"></script> -->
+
+
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>    -->
+    <!-- <script src="js/main.js"></script> -->
+    <!-- <SCRIPT type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/linq.js/2.2.0.2/jquery.linq.js"></SCRIPT>
+    <SCRIPT type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/linq.js/2.2.0.2/jquery.linq.min.js"></SCRIPT>
+    <SCRIPT type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/linq.js/2.2.0.2/linq.js"></SCRIPT>
+    <SCRIPT type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/linq.js/2.2.0.2/linq.min.js"></SCRIPT> -->
+
+</head>
+
+<body>
+
+     <div id="header">
+        <h1>Student Analysis Report</h1>
+    </div> 
+    <div class="main">
+        <div class="row">
+            <div class="container">
+            <tr>
+                <div class="col-md-6 text-center">
+                    <h2 class="text-center">Total Leakage Percent Chart</h2>
+                    <div id="totalabsentchart">
+                        <div class="numberheader">Total Leakage</div>
+                    </div>
+                </div>
+            </tr>
+            <tr>
+                <div class="col-md-6 text-center">
+                    <h2 class="text-center">Count Of Defaulters</h2>
+                    <div id="pie2"></div>
+                </div>
+            </tr>
+            <tr>
+                <div class="col-md-6 text-center">
+                    <div id="batchpie">
+                        <h2 class="text-center ttlcont" id ="txt">Batchwise Count Of Defaulters</h2>
+                    </div>
+                </div>
+            </tr>
+        </div>
+
+        <div class="row">
+            <div class="container">
+                <div>
+                        <input type="text" id="myInput" placeholder="search" onkeyup="myFunctionn()">
+                </div>
+                    <table id="table" class="tabledes"></table></div>
+                    <div id="paging">
+                        Showing
+                        <span id="begin"></span>-
+                        <span id="end"></span> of
+                        <span id="size"></span>
+                        <button id="last" class="btn btn-default" type="Button" value="Last">Last</button>
+                        <button id="next" class="btn btn-default" type="button" value="Next">Next</button>
+                    </div>
+                    <div class="makecenter">
+                        <button class="btn btn-primary" id="download">download</button>
+                    </div>
+                    <div class="clearfix"></div>
+            </div>
+           
+
+           
+        </div>
+    </div>
+    </div>
+
+    <script>
+        function myFunctionn() {
+          var input, filter, table, tr, td, i;
+          input = document.getElementById("myInput");
+          filter = input.value.toUpperCase();
+          table = document.getElementById("table");
+          tr = table.getElementsByTagName("tr");
+          for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+              if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+              } else {
+                tr[i].style.display = "none";
+              }
+            }       
+          }
+        }
+        </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- <div id="pie2">Count Of Defaulters</div> -->
+    <!-- <div id="batchpie">Batchwise Count Of Defaulters</div> -->
+    <!-- <table id="table"></table>
+    <div id="paging">
+        Showing <span id="begin"></span>-<span id="end"></span> of <span id="size"></span>.
+        <button id="last" class="btn btn-default" type="Button" value="Last" >Last</button>
+        <button id="next" class="btn btn-default" type="button" value="Next" >Next</button>
+    </div>
+    <button class="btn btn-primary" id="download">download</button> -->
+
+
+    <script src="./js/FileSaver.js"></script>
+    <script src="./js/moment.min.js"></script>
+    <script src="./data/api.js"></script>
+    <script src="./graph/studentDetails.js"></script>
+    <script src="./graph/batchDetails.js"></script>
+    <script src="./graph/leakageMonth.js"></script>
+    <script src="./graph/leakageDistribution.js"></script>
+    <script src="./js/index.js"></script>
+
+
+</body>
+
+</html>

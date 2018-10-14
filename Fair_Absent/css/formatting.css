@@ -1,0 +1,109 @@
+.main {
+    position: relative;
+    top: 80px;
+}
+
+.container {
+    width: 80%;
+    background: #fff;
+    padding: 1em;
+    box-sizing: border-box;
+    margin: 2em auto;
+    min-height: 450px;
+    height: auto;
+}
+div#paging, #download {
+    display: none;
+}
+.col-md-6 {
+    width: 32%;
+    float: left;
+    box-sizing: border-box;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.text-center {
+    text-align: center;
+}
+
+table.tabledes {
+    width: 100%;
+    margin: 10px auto;
+    text-align: center;
+    padding: 2em;
+}
+
+.btn-default{
+    color: #000;
+    background: rgb(240, 169, 141);
+}
+
+.makecenter {
+    width: 100%;
+    text-align: center;
+}
+h2 {
+    font-size: 1.52em;
+    text-align: center;
+    display: block;
+    width: 100%;
+}
+.row {
+    width: 100%;
+    display: block;
+    clear: both;
+    margin: 2em 0;
+}
+.ttlcont{
+    display:none;
+}
+.dc-table-row td {
+    width: 13%;
+    text-align: center;
+    background: #f2f2f2;
+    height: 40px;
+    border: 1px solid #ccc;
+}
+
+th.dc-table-head {
+    width: 13%;
+    line-height: 48px;
+    background: #ccc;
+    text-align: center;
+}
+
+tr.dc-table-group {
+    line-height: 10px;
+    height: 10px;
+    padding: 2em;
+}
+
+.numberheader {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+div#header {
+    height: 80px;
+    text-align: center;
+    background: #434141;
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    line-height: 28px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 999999;
+}
+
+#totalabsentchart {
+    background: orange;
+    width: 200px;
+    font-size: 16px;
+    text-align: top;
+    line-height: normal;
+    margin: 3.5em auto;
+    padding: 2em;
+}
